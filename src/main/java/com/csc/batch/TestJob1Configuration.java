@@ -5,7 +5,7 @@
  * All rights reserved.
  ******************************************************/
 
-package com.csc.batch2;
+package com.csc.batch;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -17,6 +17,7 @@ import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cloud.task.configuration.EnableTask;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,9 +27,10 @@ import org.springframework.context.annotation.Configuration;
  * @version 12 Dec 2019
  */
 @Configuration
+@EnableAutoConfiguration
 @EnableBatchProcessing
 @EnableTask
-public class TestJob2Configuration {
+public class TestJob1Configuration {
 	
 	@Autowired
 	protected JobBuilderFactory jobBuilderFactory;
@@ -37,8 +39,8 @@ public class TestJob2Configuration {
 	protected StepBuilderFactory stepBuilderFactory;
 	
 	@Bean
-	public Job testJob() {
-		return jobBuilderFactory.get("TESTJOB2").start(step1()).build();
+	public Job testJob1() {
+		return jobBuilderFactory.get("TESTJOB1").start(step1()).build();
 	}
 
 	/**
@@ -46,10 +48,10 @@ public class TestJob2Configuration {
 	 */
 	@Bean
 	protected Step step1() {
-		return stepBuilderFactory.get("TESTJOB2.STEP1").tasklet(new Tasklet() {
+		return stepBuilderFactory.get("TESTJOB1.STEP1").tasklet(new Tasklet() {
 			@Override
 			public RepeatStatus execute(final StepContribution contribution, final ChunkContext chunkContext) throws Exception {
-				System.out.println(TestJob2Configuration.class + " is executed");
+				System.out.println(TestJob1Configuration.class + " is executed");
 				return RepeatStatus.FINISHED;
 			}
 		}).build();
