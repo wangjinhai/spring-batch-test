@@ -1,10 +1,3 @@
-
-/******************************************************
- * Unpublished confidential information of Computer Sciences Corporation. Do not disclose.<br>
- * Copyright (c) Computer Sciences Corporation 2010 to present.<br>
- * All rights reserved.
- ******************************************************/
-
 package com.csc.batch2;
 
 import org.springframework.batch.core.Job;
@@ -21,10 +14,6 @@ import org.springframework.cloud.task.configuration.EnableTask;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * @author Jinhai (Max) Wang
- * @version 12 Dec 2019
- */
 @Configuration
 @EnableBatchProcessing
 @EnableTask
